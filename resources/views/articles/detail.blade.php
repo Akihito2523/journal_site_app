@@ -15,20 +15,22 @@
     <p>タイトル：{{ $articles->title }}</p>
     <p>{{ $articles->body }}</p>
 
-    <form action="">
+    <form action="/articles/{{ $articles->id }}" id="form_recipe" method="post">
+        @csrf
+        @method('DELETE')
+
         <a href="/articles/" class="block">
             <button type="button">一覧へ戻る</button>
-        </a>
-
-        <a href="/articles/create" class="block">
-            <button type="button">新規論文投稿</button>
         </a>
 
         <a href="/articles/{{ $articles->id }}/edit" class="block">
             <button type="button">編集する</button>
         </a>
-        <!-- <button onclick="location.href='/articles/'">一覧へ戻る</button> -->
+
+        <input type="submit" value="削除する" id="btn" class="block">
+
     </form>
+    <script src="{{ asset('/js/index.js') }}"></script>
 </body>
 
 </html>

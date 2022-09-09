@@ -5,13 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use Illuminate\Http\Request;
 
-class ArticleController extends Controller {
+class ArticleController extends Controller
+{
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
+    public function index()
+    {
         $articles = Article::all();
         return view('articles.list', ['articles' => $articles]);
     }
@@ -23,7 +25,8 @@ class ArticleController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() {
+    public function create()
+    {
         return view('articles.create');
     }
 
@@ -34,7 +37,8 @@ class ArticleController extends Controller {
      * @return \Illuminate\Http\Response
      */
 
-    public function store(Request $request) {
+    public function store(Request $request)
+     {
         // インスタンスの作成
         $article = new Article;
         // 値の用意
@@ -52,14 +56,11 @@ class ArticleController extends Controller {
      * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function show($i) {
+    public function show($i)
+    {
         $articles = Article::find($i);
         return view('articles.detail', ['articles' => $articles]);
     }
-
-    // public function show($i) {
-
-    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -67,8 +68,10 @@ class ArticleController extends Controller {
      * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function edit(Article $article) {
-        //
+    public function edit($id)
+    {
+        $articles = Article::find($id);
+        return view('articles.edit', ['articles' => $articles]);
     }
 
     /**
@@ -78,8 +81,21 @@ class ArticleController extends Controller {
      * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Article $article) {
-        //
+
+    public function update(Request $request, $id)
+    {
+        // ここはidで探して持ってくる以外はstoreと同じ
+        $articles = Article::find($id);
+
+        // 値の用意
+        $articles->title = $request->title;
+        $articles->body = $request->body;
+
+        // 保存
+        $articles->save();
+
+        // 登録したらindexに戻る
+        return redirect('/articles');
     }
 
     /**
@@ -88,7 +104,12 @@ class ArticleController extends Controller {
      * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Article $article) {
-        //
+
+    public function destroy($id)
+    {
+        $articles = Article::find($id);
+        $articles->delete();
+
+        return redirect('/articles');
     }
 }
