@@ -13,20 +13,21 @@
     <h1>論文詳細</h1>
 
     <p>タイトル：{{ $articles->title }}</p>
-    <p>タイトル：{{ $articles->body }}</p>
+    <p>{{ $articles->body }}</p>
 
     <form action="">
-        <a href="/articles/">
+        <a href="/articles/" class="block">
             <button type="button">一覧へ戻る</button>
         </a>
 
-        <!-- <button onclick="location.href='/articles/'">一覧へ戻る</button> -->
+        <a href="/articles/create" class="block">
+            <button type="button">新規論文投稿</button>
+        </a>
 
-        <input type="submit" value="新規論文投稿">
-
-        <a href="/articles/{{ $articles->id }}/edit">
+        <a href="/articles/{{ $articles->id }}/edit" class="block">
             <button type="button">編集する</button>
         </a>
+        <!-- <button onclick="location.href='/articles/'">一覧へ戻る</button> -->
     </form>
 </body>
 

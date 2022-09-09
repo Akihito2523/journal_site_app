@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>論文一覧</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 
 <body>
@@ -17,9 +18,9 @@
     </a>
     @endforeach
 
-    <form action="">
-        <input type="submit" value="新規論文投稿">
-    </form>
+    <a href="/articles/create">
+        <button type="button">新規論文投稿</button>
+    </a>
 </body>
 
 </html>
