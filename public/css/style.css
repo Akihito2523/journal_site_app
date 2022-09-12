@@ -1,14 +1,11 @@
 @charset "utf-8";
 
-a {
-    /* display: inline-block; */
-}
-
-/* label {
-    display: block;
-} */
 
 .block {
     display: inline-block;
     margin: -2px;
+}
+
+.error {
+    color: red;
 }

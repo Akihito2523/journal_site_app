@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
-use Illuminate\Http\Request;
+use App\Http\Requests\journal_site_appRequest;
+
 
 class ArticleController extends Controller
 {
@@ -15,7 +16,7 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::all();
-        return view('articles.list', ['articles' => $articles]);
+        return view('articles.index', ['articles' => $articles]);
     }
 
 
@@ -37,8 +38,8 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function store(Request $request)
-     {
+    public function store(journal_site_appRequest $request)
+    {
         // インスタンスの作成
         $article = new Article;
         // 値の用意
@@ -56,10 +57,10 @@ class ArticleController extends Controller
      * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function show($i)
+    public function show($id)
     {
-        $articles = Article::find($i);
-        return view('articles.detail', ['articles' => $articles]);
+        $articles = Article::find($id);
+        return view('articles.show', ['articles' => $articles]);
     }
 
     /**
@@ -82,7 +83,7 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function update(Request $request, $id)
+    public function update(journal_site_appRequest $request, $id)
     {
         // ここはidで探して持ってくる以外はstoreと同じ
         $articles = Article::find($id);
