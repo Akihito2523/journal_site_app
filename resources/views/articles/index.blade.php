@@ -18,9 +18,7 @@
         </a>
     @endforeach
 
-    <a href="/articles/create">
-        <button type="button">新規論文投稿</button>
-    </a>
+    <a href="/articles/create" class="block">新規論文投稿</a>
 </body>
 
 </html>

@@ -36,10 +36,8 @@
             <label for="body">本文</label><br>
             <textarea name="body" class="body">{{ old('body', $articles->body) }}</textarea>
         </p>
-
         <input type="submit" value="更新">
     </form>
-    </a>
 </body>
 
 </html>
